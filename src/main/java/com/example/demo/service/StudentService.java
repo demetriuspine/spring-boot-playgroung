@@ -23,9 +23,39 @@ public class StudentService {
 		return ResponseEntity.status(HttpStatus.OK).body(student);
 	}
 	
-	private List<Student> getStudents() {
+	private ResponseEntity<List<Student>> getStudents() {
 		List<Student> students = new ArrayList<>(studentsList.values());
 		
-		return students;
+		return ResponseEntity.status(HttpStatus.OK).body(students);
+	}
+	
+	private ResponseEntity<Student> addStudent(Student newStudent) {
+		Student student = studentsList.get(newStudent.getId());
+		if (student != null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+		
+		studentsList.put(newStudent.getId(), student);
+		return ResponseEntity.status(HttpStatus.CREATED).body(newStudent);
+	}
+	
+	private ResponseEntity<Student> updateStudent(Student newStudent) {
+		Student student = studentsList.get(newStudent.getId());
+		if (student == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+		
+		studentsList.put(newStudent.getId(), student);
+		return ResponseEntity.status(HttpStatus.OK).body(newStudent);
+	}
+	
+	private ResponseEntity<String> deleteStudent(Long id) {
+		Student student = studentsList.get(id);
+		if (student == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+		
+		studentsList.remove(id);
+		return ResponseEntity.status(HttpStatus.OK).body("Student succesfully deleted");
 	}
 }
