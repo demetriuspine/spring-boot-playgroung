@@ -37,7 +37,7 @@ public class StudentService {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		}
 		
-		studentsList.put(newStudent.getId(), student);
+		studentsList.put(newStudent.getId(), newStudent);
 		return ResponseEntity.status(HttpStatus.CREATED).body(newStudent);
 	}
 	
@@ -47,7 +47,7 @@ public class StudentService {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		}
 		
-		studentsList.put(newStudent.getId(), student);
+		studentsList.put(newStudent.getId(), newStudent);
 		return ResponseEntity.status(HttpStatus.OK).body(newStudent);
 	}
 	
