@@ -162,5 +162,4 @@ $RECYCLE.BIN/
 
 mvnw
 mvnw.cmd
-pom.xml
 # End of https://www.gitignore.io/api/git,java,maven,eclipse,windows
